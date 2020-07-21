@@ -19,10 +19,9 @@ draw_surface(_surface, 0, 0);
 shader_reset();
 surface_reset_target();
 
-surface_set_target(_surface);
 shader_set(_shader);
 shader_set_uniform_f(shader_get_uniform(_shader, "u_vTexelStep"), 0.0, _scale*texture_get_texel_height(surface_get_texture(_temp)));
 shader_set_uniform_f(shader_get_uniform(_shader, "u_fIntensity"), 1);
 draw_surface(_temp, 0, 0);
 shader_reset();
-surface_reset_target();
+surface_free(_temp);
